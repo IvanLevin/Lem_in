@@ -6,11 +6,12 @@ void ants(t_lem **lem, t_char **inform)
     int  i;
 
     i = 0;
+    line = NULL;
     get_next_line(0, &line);
     if (!line)
         exit(EXIT_FAILURE);
-    *inform = create_char(line);
-    push_char(inform, create_char("\n"));
+    *inform = str_to_char(line);
+    push_char(inform, create_char('\n'));
     while (line[i])
     {
         if (line[i] >= '0' && line[i] <= '9')

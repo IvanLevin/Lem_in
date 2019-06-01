@@ -7,12 +7,9 @@ static void lem_in()
     t_char  *inform;
 
     inform = NULL;
-    parsing_lim(&lem, &inform);
-
+    parsing_lem(&lem, &inform);
+    print_inform(inform);
 }
-
-
-
 
 int main(void)
 {

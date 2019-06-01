@@ -24,7 +24,7 @@ t_lem *create_lem(void)
     return (new);
 }
 
-t_char *create_char(char *line)
+t_char *create_char(int line)
 {
     t_char *new;
 
@@ -49,4 +49,24 @@ t_char *push_char(t_char **inform, t_char *next)
     else
         *inform = next;
     return (0);
+}
+
+t_char		*str_to_char(char *inform)
+{
+    t_char		*head;
+    t_char		*next;
+    int			n;
+
+    n = 0;
+    if (!inform || !inform[n])
+        return (NULL);
+    head = create_char(inform[n++]);
+    next = head;
+    while (inform[n])
+    {
+        next->next = create_char(inform[n]);
+        next = next->next;
+        n++;
+    }
+    return (head);
 }

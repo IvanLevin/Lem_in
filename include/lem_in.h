@@ -32,16 +32,20 @@ typedef struct s_rooms
 
 typedef struct s_char
 {
-    char *letter;
+    int letter;
     struct s_char *next;
 
 }t_char;
 
-void parsing_lim(t_lem **lem, t_char **inform);
+void parsing_lem(t_lem **lem, t_char **inform);
 t_graf *create_graf();
 t_lem *create_lem(void);
 void ants(t_lem **lem, t_char **inform);
-t_char *create_char(char *line);
+t_char *create_char(int line);
 t_char *push_char(t_char **inform, t_char *next);
+void data (t_graf **graf, t_lem **lem, t_char **inform);
+t_char		*str_to_char(char *inform);
+void print_inform(t_char *inform);
+void map_with_hash(char *line, t_lem **lem, t_graf **graf, t_char **inf);
 
 #endif

@@ -55,18 +55,18 @@ t_char		*str_to_char(char *inform)
 {
     t_char		*head;
     t_char		*next;
-    int			n;
+    int			i;
 
-    n = 0;
-    if (!inform || !inform[n])
+    i = 0;
+    if (!inform || !inform[i])
         return (NULL);
-    head = create_char(inform[n++]);
+    head = create_char(inform[i++]);
     next = head;
-    while (inform[n])
+    while (inform[i])
     {
-        next->next = create_char(inform[n]);
+        next->next = create_char(inform[i]);
         next = next->next;
-        n++;
+        i++;
     }
     return (head);
 }

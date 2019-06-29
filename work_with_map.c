@@ -20,7 +20,7 @@ static  void save_end(t_lem **lem, t_graf **graf, t_char **inf)
     clear_array(&get_end);
 }
 
-static  void save_start(t_lem **lem, t_graf **graf, t_char **inf)
+static  void save_start(t_graf **graf, t_char **inf)
 {
     char *line;
     char **get_start;
@@ -47,7 +47,7 @@ int map_with_hash(char *line, t_lem **lem, t_graf **graf, t_char **inf)
         if ((*graf)->start)
             exit(EXIT_FAILURE);
         free(line);
-        save_start(lem, graf, inf);
+        save_start(graf, inf);
         return (1);
     }
     else if (!ft_strcmp(line, "##end"))

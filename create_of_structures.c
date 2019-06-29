@@ -9,6 +9,7 @@ t_graf *create_graf(void)
      new->start = 0;
      new->end = 0;
      new->rooms = NULL;
+     new->link = NULL;
     return (new);
 }
 

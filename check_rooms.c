@@ -42,7 +42,7 @@ void add_room_in_graf(t_rooms **graf_rom, t_rooms **room)
         *graf_rom = *room;
 }
 
-void get_name_ant(t_lem **lem, t_graf **graf, char **line)
+void get_name_rooms(t_lem **lem, t_graf **graf, char **line)
 {
     char    **param;
     t_rooms *room;
@@ -67,7 +67,7 @@ int check_rooms(t_lem **lem, t_graf **graf, char **line)
         exit(EXIT_FAILURE);
     else if (check_exist_ant(*line, ' '))
     {
-        get_name_ant(lem, graf, line);
+        get_name_rooms(lem, graf, line);
         return (1);
     }
     return (0);

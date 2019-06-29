@@ -10,9 +10,6 @@
 # include "../libft/libft.h"
 # include "get_next_line.h"
 
-// коллчество муравьев
-// кол - во комнат
-// структура графа
 typedef struct      s_lem
 {
     int ants;
@@ -21,9 +18,6 @@ typedef struct      s_lem
     struct s_graf   *graf;
 }                   t_lem;
 
-// начало графа
-// конец графа
-// структура комнат
 typedef struct      s_graf
 {
     char            *start;
@@ -32,8 +26,6 @@ typedef struct      s_graf
     struct s_link   *link;
 }                   t_graf;
 
-// имя комнаты
-// структура следующей комнаты
 typedef struct      s_rooms
 {
     char            *name;
@@ -52,21 +44,22 @@ typedef struct      s_link
     struct s_link   *next;
 }                   t_link;
 
-void    parsing_lem(t_lem **lem, t_char **inform);
 t_graf  *create_graf();
 t_lem   *create_lem(void);
-void    ants(t_lem **lem, t_char **inform);
+t_rooms *create_room(char *param);
 t_char  *create_char(int line);
-t_char  *push_char(t_char **inform, t_char *next);
-void    data (t_graf **graf, t_lem **lem, t_char **inform);
 t_char  *str_to_char(char *inform);
-void    print_inform(t_char *inform);
-int     map_with_hash(char *line, t_lem **lem, t_graf **graf, t_char **inf);
-int     validity_of_parameters(char **params);
+t_char  *push_char(t_char **inform, t_char *next);
 void    clear_array(char ***str);
-int     check_rooms(t_lem **lem, t_graf **graf, char **line);
-int     check_exist_ant(char *line, char i);
+void    print_inform(t_char *inform);
+void    ants(t_lem **lem, t_char **inform);
+void    parsing_lem(t_lem **lem, t_char **inform);
+void    data (t_graf **graf, t_lem **lem, t_char **inform);
+void    communication_rooms(t_lem **lem, t_graf **graf, char **line);
 int     check_for_numbers(char *param);
-void communication_rooms(t_lem **lem, t_graf **graf, char **line);
+int     check_exist_ant(char *line, char i);
+int     validity_of_parameters(char **params);
+int     check_rooms(t_lem **lem, t_graf **graf, char **line);
+int     map_with_hash(char *line, t_lem **lem, t_graf **graf, t_char **inf);
 
 #endif

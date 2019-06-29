@@ -17,10 +17,7 @@ void ants(t_lem **lem, t_char **inform)
         if (line[i] >= '0' && line[i] <= '9')
             i++;
         else
-        {
-            printf("ERROR!");
             exit(EXIT_FAILURE);
-        }
     }
     (*lem)->ants = ft_atoi(line);
     free(line);

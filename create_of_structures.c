@@ -1,6 +1,6 @@
 #include "include/lem_in.h"
 
-t_graf *create_graf(void)
+t_graf  *create_graf(void)
 {
     t_graf *new;
 
@@ -13,7 +13,7 @@ t_graf *create_graf(void)
     return (new);
 }
 
-t_lem *create_lem(void)
+t_lem   *create_lem(void)
 {
     t_lem *new;
 
@@ -25,7 +25,7 @@ t_lem *create_lem(void)
     return (new);
 }
 
-t_char *create_char(int line)
+t_char  *create_char(int line)
 {
     t_char *new;
 
@@ -36,7 +36,7 @@ t_char *create_char(int line)
     return (new);
 }
 
-t_char *push_char(t_char **inform, t_char *next)
+t_char  *push_char(t_char **inform, t_char *next)
 {
     t_char *save_struct;
 
@@ -52,7 +52,7 @@ t_char *push_char(t_char **inform, t_char *next)
     return (0);
 }
 
-t_char		*str_to_char(char *inform)
+t_char  *str_to_char(char *inform)
 {
     t_char		*head;
     t_char		*next;

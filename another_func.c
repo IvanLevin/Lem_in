@@ -1,5 +1,16 @@
 #include "./include/lem_in.h"
 
+t_int	*create_int(int integer)
+{
+    t_int	*new;
+
+    if (!(new = (t_int*)ft_memalloc(sizeof(t_int))))
+        exit(EXIT_FAILURE);
+    new->integer = integer;
+    new->next = NULL;
+    return (new);
+}
+
 int check_for_numbers(char *param)
 {
     int i;

@@ -60,7 +60,6 @@ void get_communication(t_lem **lem, t_graf **graf, char **line)
         exit(EXIT_FAILURE);
     link = creat_link(param);
     add_link_in_graf(&(*graf)->link, &link);
-    (*lem)->links += 1;
     free(*line);
 }
 

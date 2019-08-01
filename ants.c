@@ -1,6 +1,23 @@
 #include "include/lem_in.h"
 
-void ants(t_lem **lem, t_char **inform)
+int		unshift_ant(t_ants **begin_list, t_ants *data)
+{
+    t_ants	*next;
+
+    if (!data)
+        return (1);
+    next = *begin_list;
+    if (next)
+    {
+        data->next = *begin_list;
+        *begin_list = data;
+    }
+    else
+        *begin_list = data;
+    return (0);
+}
+
+void    ants(t_lem **lem, t_char **inform)
 {
     char *line;
     int  i;

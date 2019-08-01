@@ -46,6 +46,8 @@ static  void    get_nodes(t_graf *graf, t_lem *lem)
         y = find_position(graf->rooms, link->name[1], lem->rooms);
         add_node_in_node(&((lem->node)[x].line), create_int(y));
         add_node_in_node(&((lem->node)[y].line), create_int(x));
+        lem->node[x].name = link->name[0];
+        lem->node[y].name = link->name[1];
         link = link->next;
     }
 }
@@ -69,7 +71,6 @@ static  t_node *create_node(int count_rooms)
 
 void            create_and_get_adjacency_lists (t_graf *graf, t_lem **lem)
 {
-    if (((*lem)->node = create_node((*lem)->rooms)) == NULL)
-        return exit(EXIT_FAILURE);
+    (*lem)->node = create_node((*lem)->rooms);
     get_nodes(graf, *lem);
 }

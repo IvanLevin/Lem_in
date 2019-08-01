@@ -19,40 +19,48 @@ static void check_repeat_rooms(t_rooms *rooms)
     }
 }
 
-static void add_to_start_in_graf(t_rooms **rooms, char *start)
+static  int		unshift_rooms(t_rooms **begin_list, t_rooms **data)
 {
-    t_rooms *room;
-    t_rooms *next;
+    t_rooms	*next;
 
-    if(!(room = create_room(ft_strdup(start))))
-        return exit(EXIT_FAILURE);
-    next = *rooms;
+    if (!*data)
+        return (1);
+    next = *begin_list;
     if (next)
     {
-        while(next->next)
-            next = next->next;
-        next->next = room;
+        (*data)->next = *begin_list;
+        *begin_list = *data;
     }
     else
-        *rooms = room;
+        *begin_list = *data;
+    return (0);
 }
 
-static void add_to_end_in_graf(t_rooms **rooms, char *end)
+static  int		push_rooms(t_rooms **begin_list, t_rooms *data)
 {
-    t_rooms *room;
-    t_rooms *next;
+    t_rooms	*next;
 
-    if(!(room = create_room(ft_strdup(end))))
-        return exit(EXIT_FAILURE);
-    next = *rooms;
+    if (!data)
+        return (1);
+    next = *begin_list;
     if (next)
     {
-        while(next->next)
+        while (next->next)
             next = next->next;
-        next->next = room;
+        next->next = data;
     }
     else
-        *rooms = room;
+        *begin_list = data;
+    return (0);
+}
+
+static void		set_startend(t_graf **graf)
+{
+    t_rooms		*room;
+
+    push_rooms(&(*graf)->rooms, create_room(ft_strdup((*graf)->start)));
+    room = create_room(ft_strdup((*graf)->end));
+    unshift_rooms(&(*graf)->rooms, &room);
 }
 
 void data(t_graf **graf, t_lem **lem, t_char **inform)
@@ -68,25 +76,6 @@ void data(t_graf **graf, t_lem **lem, t_char **inform)
             continue;
         communication_rooms(lem, graf, &line);
     }
-    add_to_start_in_graf(&(*graf)->rooms, (*graf)->start);
-    add_to_end_in_graf(&(*graf)->rooms, (*graf)->end);
+    set_startend(graf);
     check_repeat_rooms((*graf)->rooms);
-
-            // ПРОВЕРКА НА УСПЕШНОСТЬ СОХРАНЕНЫХ ДАННЫХ
-    // 1. Связи
-    while ((*graf)->link)
-    {
-        printf("link from %s ", (*graf)->link->name[0]);
-        printf("link to %s\n ", (*graf)->link->name[1]);
-        (*graf)->link = (*graf)->link->next;
-    }
-    // 2. Имена комнат
-    while ((*graf)->rooms)
-    {
-        printf("Rooms: %s \n", (*graf)->rooms->name);
-        (*graf)->rooms = (*graf)->rooms->next;
-    }
-    printf("\n");
-    printf("Колличество комнат ");
-    printf("%d\n", (*lem)->rooms);
 }

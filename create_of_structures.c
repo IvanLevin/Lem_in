@@ -6,8 +6,8 @@ t_graf  *create_graf(void)
 
      if (!(new = (t_graf*)malloc(sizeof(t_graf))))
          return (NULL);
-     new->start = 0;
-     new->end = 0;
+     new->start = NULL;
+     new->end = NULL;
      new->rooms = NULL;
      new->link = NULL;
     return (new);
@@ -21,6 +21,7 @@ t_lem   *create_lem(void)
         return (NULL);
     new->ants = 0;
     new->rooms = 2;
+    new->node = NULL;
     new->graf = NULL;
     return (new);
 }

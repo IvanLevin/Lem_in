@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   shift_int.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gkshleri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/02 16:22:47 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/08/02 16:22:55 by gkshleri         ###   ########.fr       */
+/*   Created: 2019/08/02 16:25:40 by gkshleri          #+#    #+#             */
+/*   Updated: 2019/08/02 16:25:41 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/lem_in.h"
 
-static void lem_in()
+int	shift_int(t_int **integer)
 {
-    t_lem       *lem;
-    t_char      *inform;
-    t_stream	*streams;
+	t_int	*update;
+	int		answer;
 
-    inform = NULL;
-    parsing_lem(&lem, &inform);
-    solve(lem, &streams);
-
-    print_inform(inform);
-    ft_putendl("");
-    run_ants(lem, &streams);
-//    clear_char(&inform);
-//    clear_streams(&streams);
-//    clear_lem(&lem);
-
+	if (!*initgroups)
+		return (-2);
+	answer = (*integer)->integer;
+	update = (*integer)->next;
+	free(*integer);
+	*integer = update;
+	return (answer);
 }
 
-int main(void)
-{
-    lem_in();
-    return (0);
-}

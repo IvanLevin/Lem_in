@@ -37,19 +37,21 @@ t_char  *create_char(int line)
     return (new);
 }
 
-t_char  *push_char(t_char **inform, t_char *next)
+int  push_char(t_char **begin_list, t_char *data)
 {
-    t_char *save_struct;
+    t_char	*next;
 
-    save_struct = *inform;
-    if (save_struct)
+    if (!data)
+        return (1);
+    next = *begin_list;
+    if (next)
     {
-        while (save_struct->next)
-            save_struct = save_struct->next;
-        save_struct->next = next;
+        while (next->next)
+            next = next->next;
+        next->next = data;
     }
     else
-        *inform = next;
+        *begin_list = data;
     return (0);
 }
 

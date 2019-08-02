@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   data.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkshleri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/02 16:25:06 by gkshleri          #+#    #+#             */
+/*   Updated: 2019/08/02 16:25:08 by gkshleri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./include/lem_in.h"
 
 static void check_repeat_rooms(t_rooms *rooms)
@@ -36,7 +48,7 @@ static  int		unshift_rooms(t_rooms **begin_list, t_rooms **data)
     return (0);
 }
 
-static  int		push_rooms(t_rooms **begin_list, t_rooms *data)
+int		push_rooms(t_rooms **begin_list, t_rooms *data)
 {
     t_rooms	*next;
 
@@ -76,6 +88,9 @@ void data(t_graf **graf, t_lem **lem, t_char **inform)
             continue;
         communication_rooms(lem, graf, &line);
     }
+    if (!(*graf)->start || !(*graf)->end
+        || !(*graf)->link || !(*graf)->rooms)
+        exit(EXIT_FAILURE);
     set_startend(graf);
     check_repeat_rooms((*graf)->rooms);
 }

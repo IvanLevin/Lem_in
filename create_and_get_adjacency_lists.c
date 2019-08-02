@@ -26,11 +26,11 @@ static int find_position(t_rooms *rooms, char *name_room, int count)
     while (rooms)
     {
         count--;
-        if (!ft_strcmp(rooms->name, name_room))
+        if (!ft_strcmp(name_room, rooms->name))
             return (count);
         rooms = rooms->next;
     }
-    exit(EXIT_FAILURE);
+    return (0);
 }
 
 static  void    get_nodes(t_graf *graf, t_lem *lem)
@@ -42,12 +42,12 @@ static  void    get_nodes(t_graf *graf, t_lem *lem)
     link = graf->link;
     while (link)
     {
-        x = find_position(graf->rooms, link->name[0], lem->rooms);
-        y = find_position(graf->rooms, link->name[1], lem->rooms);
+        x = find_position(graf->rooms, (link->name)[0], lem->rooms);
+        y = find_position(graf->rooms, (link->name)[1], lem->rooms);
         add_node_in_node(&((lem->node)[x].line), create_int(y));
         add_node_in_node(&((lem->node)[y].line), create_int(x));
-        lem->node[x].name = link->name[0];
-        lem->node[y].name = link->name[1];
+        lem->node[x].name = (link->name)[0];
+        lem->node[y].name = (link->name)[1];
         link = link->next;
     }
 }

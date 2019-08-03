@@ -12,30 +12,14 @@
 
 #include "./include/lem_in.h"
 
-t_rooms *create_room(char *param)
+int check_valid_room(t_rooms *room, char *param)
 {
-    t_rooms *new;
-
-    if (!(new = (t_rooms*)malloc(sizeof(t_rooms))))
-        exit(EXIT_FAILURE);
-    new->name = param;
-    new->next = NULL;
-    return (new);
-
-}
-
-int check_valid_room(t_rooms **room, char **param)
-{
-    t_rooms *next;
-
-    next = *room;
-    if (next)
-        while (next)
-        {
-            if (!ft_strcmp(next->name, param[0]))
-                exit(EXIT_FAILURE);
-            next = next->next;
-        }
+    while (room)
+    {
+        if (!ft_strcmp(room->name, param))
+            return (0);
+        room = room->next;
+    }
     return (1);
 }
 
@@ -62,8 +46,11 @@ void get_name_rooms(t_lem **lem, t_graf **graf, char **line)
     param = ft_strsplit(*line, ' ');
     if (validity_of_parameters(param) != 3 && check_for_numbers(param[1]) &&
     check_for_numbers(param[2]))
+    {
+        printf("\n Error 8 \n");
         exit(EXIT_FAILURE);
-    if (check_valid_room(&(*graf)->rooms, &param[0]))
+    }
+    if (check_valid_room((*graf)->rooms, param[0]))
     {
         room = create_room(ft_strdup(param[0]));
         add_room_in_graf(&(*graf)->rooms, &room);
@@ -72,15 +59,33 @@ void get_name_rooms(t_lem **lem, t_graf **graf, char **line)
     clear_array(&param);
     free(*line);
 }
-
-int check_rooms(t_lem **lem, t_graf **graf, char **line)
+int			count_arr_ch(char **str)
 {
+    int		n;
+
+    n = 0;
+    while (str[n])
+        n++;
+    return (n);
+}
+
+int check_rooms(char **line)
+{
+    char	**param;
+    int		answer;
+
     if (!line)
         exit(EXIT_FAILURE);
-    else if (check_exist_ant(*line, ' '))
+    param = ft_strsplit(*line, ':');
+    if (count_arr_ch(param) != 2)
+        answer = 0;
+    else if (!ft_strcmp(param[0], "#Here is the number of lines required"))
     {
-        get_name_rooms(lem, graf, line);
-        return (1);
+        free(*line);
+        answer = 1;
     }
-    return (0);
+    else
+        answer = 0;
+    clear_array(&param);
+    return (answer);
 }

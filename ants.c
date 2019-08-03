@@ -38,7 +38,11 @@ void    ants(t_lem **lem, t_char **inform)
     line = NULL;
     get_next_line(0, &line);
     if (!line)
+    {
+        printf("\n Error 1 \n");
         exit(EXIT_FAILURE);
+
+    }
     *inform = str_to_char(line);
     push_char(inform, create_char('\n'));
     while (line[i])
@@ -46,7 +50,11 @@ void    ants(t_lem **lem, t_char **inform)
         if (line[i] >= '0' && line[i] <= '9')
             i++;
         else
+        {
+            printf("\n Error 2 \n");
             exit(EXIT_FAILURE);
+
+        }
     }
     (*lem)->ants = ft_atoi(line);
     free(line);

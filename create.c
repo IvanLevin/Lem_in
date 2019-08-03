@@ -12,6 +12,17 @@
 
 #include "./include/lem_in.h"
 
+t_rooms *create_room(char *param)
+{
+    t_rooms *new;
+
+    if (!(new = (t_rooms*)malloc(sizeof(t_rooms))))
+        exit(EXIT_FAILURE);
+    new->name = param;
+    new->next = NULL;
+    return (new);
+}
+
 int			*create_mas(int len)
 {
     int	*mas;

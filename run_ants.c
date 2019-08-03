@@ -1,74 +1,86 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   run_ants.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkshleri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/03 15:28:47 by gkshleri          #+#    #+#             */
+/*   Updated: 2019/08/03 15:28:52 by gkshleri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "./include/lem_in.h"
+
 int		put_step_ants(t_lem *lem, t_ants *ants)
 {
-    int		flag;
+	int		flag;
 
-    flag = 0;
-    while (ants)
-    {
-        if (ants->rooms != (lem->rooms - 1))
-        {
-            ants->rooms = ants->stream->used[ants->rooms];
-            ft_putchar('L');
-            ft_putnbr(ants->name);
-            ft_putchar('-');
-            ft_putstr(lem->node[ants->rooms].name);
-            ft_putchar(' ');
-            flag = 1;
-        }
-        ants = ants->next;
-    }
-    if (flag)
-        ft_putchar('\n');
-    return (flag);
+	flag = 0;
+	while (ants)
+	{
+		if (ants->rooms != (lem->rooms - 1))
+		{
+			ants->rooms = ants->stream->used[ants->rooms];
+			ft_putchar('L');
+			ft_putnbr(ants->name);
+			ft_putchar('-');
+			ft_putstr(lem->node[ants->rooms].name);
+			ft_putchar(' ');
+			flag = 1;
+		}
+		ants = ants->next;
+	}
+	if (flag)
+		ft_putchar('\n');
+	return (flag);
 }
 
 void	to_let_out(t_lem *lem, t_groups *groups, t_ants **ants)
 {
-    t_groups	*group;
-    int			flag;
-    int			n;
+	t_groups	*group;
+	int			flag;
+	int			n;
 
-    n = 0;
-    flag = 1;
-    while (flag)
-    {
-        flag = 0;
-        group = groups;
-        while (group)
-        {
-            if (group->count)
-            {
-                unshift_ant(ants, create_ant(++n, group->stream));
-                group->count--;
-                flag = 1;
-            }
-            group = group->next;
-        }
-        put_step_ants(lem, *ants);
-    }
+	n = 0;
+	flag = 1;
+	while (flag)
+	{
+		flag = 0;
+		group = groups;
+		while (group)
+		{
+			if (group->count)
+			{
+				unshift_ant(ants, create_ant(++n, group->stream));
+				group->count--;
+				flag = 1;
+			}
+			group = group->next;
+		}
+		put_step_ants(lem, *ants);
+	}
 }
 
 void	put_way_ants(t_lem *lem, t_stream *streams, t_groups *groups)
 {
-    t_ants	*ants;
-    int		flag;
+	t_ants	*ants;
+	int		flag;
 
-    ants = NULL;
-    to_let_out(lem, groups, &ants);
-    flag = 1;
-    while (flag)
-        flag = put_step_ants(lem, ants);
-    clear_ants(&ants);
+	ants = NULL;
+	to_let_out(lem, groups, &ants);
+	flag = 1;
+	while (flag)
+		flag = put_step_ants(lem, ants);
+	clear_ants(&ants);
 }
 
 void	run_ants(t_lem *lem, t_stream **streams)
 {
-    t_groups		*groups;
+	t_groups		*groups;
 
-    groups = NULL;
-    set_groups(lem, *streams, &groups);
-    put_way_ants(lem, *streams, groups);
-    clear_groups(&groups);
+	groups = NULL;
+	set_groups(lem, *streams, &groups);
+	put_way_ants(lem, *streams, groups);
+	clear_groups(&groups);
 }

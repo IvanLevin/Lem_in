@@ -40,31 +40,31 @@ static  void save_start(t_graf **graf, t_char **inf)
     clear_array(&get_start);
 }
 
-int map_with_hash(char *line, t_lem **lem, t_graf **graf, t_char **inf)
+int map_with_hash(char **line, t_lem **lem, t_graf **graf, t_char **inf)
 {
-    if (!ft_strcmp(line, "##start"))
+    if (!ft_strcmp(*line, "##start"))
     {
         if ((*graf)->start)
             exit(EXIT_FAILURE);
-        free(line);
+        free(*line);
         save_start(graf, inf);
         return (1);
     }
-    else if (!ft_strcmp(line, "##end"))
+    else if (!ft_strcmp(*line, "##end"))
     {
         if ((*graf)->end)
             exit(EXIT_FAILURE);
-        free(line);
+        free(*line);
         save_end(lem, graf, inf);
         return (1);
     }
-    else if (!ft_strcmp(line, "#comment") ||
-    !ft_strcmp(line, "#another comment"))
+    else if (!ft_strcmp(*line, "#comment") ||
+    !ft_strcmp(*line, "#another comment"))
     {
-        free(line);
+        free(*line);
         return (1);
     } else
-        return (check_rooms(lem, graf, &line));
+        return (check_rooms(line));
 }
 
 

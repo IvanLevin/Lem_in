@@ -84,7 +84,7 @@ void data(t_graf **graf, t_lem **lem, t_char **inform)
     {
         push_char(inform, str_to_char(line));
         push_char(inform, create_char('\n'));
-        if (map_with_hash(line, lem, graf, inform))
+        if (map_with_hash(&line, lem, graf, inform))
             continue;
         communication_rooms(lem, graf, &line);
     }

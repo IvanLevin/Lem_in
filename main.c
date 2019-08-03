@@ -21,7 +21,6 @@ static void lem_in()
     inform = NULL;
     parsing_lem(&lem, &inform);
     solve(lem, &streams);
-
     print_inform(inform);
     ft_putendl("");
     run_ants(lem, &streams);

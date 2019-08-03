@@ -24,9 +24,8 @@ static int		get_mini_id(t_lem *lem, t_int *line, t_stream *stream)
     {
         if (!stream->used[line->integer] && id > lem->node[line->integer].id)
         {
-            printf("line->integer = %d\n", line->integer);
-            id = lem->node[line->integer].id; // 1
-            room = line->integer; // 1
+            id = lem->node[line->integer].id;
+            room = line->integer;
         }
         line = line->next;
     }
@@ -36,13 +35,12 @@ static int		get_mini_id(t_lem *lem, t_int *line, t_stream *stream)
 void			part2(t_lem *lem, t_stream *stream)
 {
     int		room;
-    int		turn; // 0;
+    int		turn;
 
     if (stream->turn)
     {
-        turn = shift_int(&stream->turn); // 0, 4
+        turn = shift_int(&stream->turn);
         room = get_mini_id(lem, lem->node[turn].line, stream); // 4, 11
-        printf("ROOM = %d\n", room);
         if (room == -3 || turn >= lem->rooms)
             return ;
         if (lem->node[turn].id > lem->node[room].id && (!stream->used[room]

@@ -81,4 +81,6 @@ void communication_rooms(t_lem **lem, t_graf **graf, char **line)
         exit(EXIT_FAILURE);
     else if (check_communication(*line, '-'))
         get_communication(lem, graf, line);
+    else if (check_exist_ant(*line, ' '))
+        get_name_rooms(lem, graf, line);
 }

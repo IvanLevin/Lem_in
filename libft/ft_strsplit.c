@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 18:03:00 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/04/28 15:06:08 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/08/03 15:43:30 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,3 @@ char			**ft_strsplit(char const *s, char c)
 	str[i] = NULL;
 	return (str);
 }
-

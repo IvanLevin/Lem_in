@@ -25,4 +25,3 @@ int	shift_int(t_int **integer)
 	*integer = update;
 	return (answer);
 }
-

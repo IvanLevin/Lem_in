@@ -52,7 +52,7 @@ void	to_let_out(t_lem *lem, t_groups *groups, t_ants **ants)
 		{
 			if (group->count)
 			{
-				unshift_ant(ants, create_ant(++n, group->stream));
+				unshift_ant(ant s, create_ant(++n, group->stream));
 				group->count--;
 				flag = 1;
 			}

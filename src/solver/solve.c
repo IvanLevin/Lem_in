@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/lem_in.h"
+#include "../../include/lem_in.h"
 
 static int		check_valid(int *mas, int stop)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/lem_in.h"
+#include "../../include/lem_in.h"
 
 int		put_step_ants(t_lem *lem, t_ants *ants)
 {

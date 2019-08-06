@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/lem_in.h"
+#include "../../include/lem_in.h"
 
 static	void	part1_bfs(t_lem *lem, t_int **turn)
 {

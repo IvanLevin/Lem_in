@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/lem_in.h"
+#include "../../include/lem_in.h"
 
 void		clear_link(t_link **link)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/lem_in.h"
+#include "../../include/lem_in.h"
 
 void		clear_graf(t_graf **graf)
 {

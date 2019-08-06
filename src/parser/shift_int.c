@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_one_char.c                                   :+:      :+:    :+:   */
+/*   shift_int.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: breolson <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gkshleri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/03 15:46:20 by breolson          #+#    #+#             */
-/*   Updated: 2019/08/03 15:46:35 by breolson         ###   ########.fr       */
+/*   Created: 2019/08/02 16:25:40 by gkshleri          #+#    #+#             */
+/*   Updated: 2019/08/02 16:25:41 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/lem_in.h"
+#include "../../include/lem_in.h"
 
-void		clear_one_char(t_char **letter)
+int	shift_int(t_int **integer)
 {
-	(void)(*letter)->letter;
-	(*letter)->next = NULL;
-	free(*letter);
-	(*letter) = NULL;
+	t_int	*update;
+	int		answer;
+
+	if (!*initgroups)
+		return (-2);
+	answer = (*integer)->integer;
+	update = (*integer)->next;
+	free(*integer);
+	*integer = update;
+	return (answer);
 }

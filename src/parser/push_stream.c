@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_stream.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gkshleri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/03 15:39:13 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/08/03 15:42:00 by gkshleri         ###   ########.fr       */
+/*   Created: 2019/08/03 15:34:39 by gkshleri          #+#    #+#             */
+/*   Updated: 2019/08/03 15:34:41 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/lem_in.h"
+#include "../../include/lem_in.h"
 
-static	void	lem_in(void)
+int		push_stream(t_stream **begin_list, t_stream *data)
 {
-	t_lem		*lem;
-	t_char		*inform;
-	t_stream	*streams;
+	t_stream	*next;
 
-	inform = NULL;
-	parsing_lem(&lem, &inform);
-	solve(lem, &streams);
-	print_inform(inform);
-	ft_putendl("");
-	run_ants(lem, &streams);
-	clear_char(&inform);
-	clear_streams(&streams);
-	clear_lem(&lem);
-}
-
-int				main(void)
-{
-	lem_in();
+	if (!data)
+		return (1);
+	next = *begin_list;
+	if (next)
+	{
+		while (next->next)
+			next = next->next;
+		next->next = data;
+	}
+	else
+		*begin_list = data;
 	return (0);
 }

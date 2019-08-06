@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/lem_in.h"
+#include "../../include/lem_in.h"
 
 static t_int	*del_connect(t_int *line, int y)
 {

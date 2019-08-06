@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_stream.c                                      :+:      :+:    :+:   */
+/*   push_int.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gkshleri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/03 15:34:39 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/08/03 15:34:41 by gkshleri         ###   ########.fr       */
+/*   Created: 2019/08/02 16:25:21 by gkshleri          #+#    #+#             */
+/*   Updated: 2019/08/02 16:25:22 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/lem_in.h"
+#include "../../include/lem_in.h"
 
-int		push_stream(t_stream **begin_list, t_stream *data)
+int		push_int(t_int **begin_list, t_int *data)
 {
-	t_stream	*next;
+	t_int	*next;
 
 	if (!data)
 		return (1);

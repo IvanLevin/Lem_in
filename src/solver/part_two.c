@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/lem_in.h"
+#include "../../include/lem_in.h"
 
 static	int		get_mini_id(t_lem *lem, t_int *line, t_stream *stream)
 {

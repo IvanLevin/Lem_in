@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/lem_in.h"
+#include "../../include/lem_in.h"
 
 void	save_end(t_lem **lem, t_graf **graf, t_char **inf)
 {
